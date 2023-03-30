@@ -1,0 +1,129 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        * {
+            box-sizing: inherit;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inner-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .inline-left {
+            width: 50%;
+            display: block;
+            padding: 8px 5px;
+            margin: 5px 10px 5px 5px;
+        }
+
+        .inline-right {
+            width: 50%;
+            display: block;
+            padding: 8px 5px;
+            margin: 5px 10px 5px 10px;
+        }
+
+        .block {
+            width: 100%;
+            padding: 8px 5px;
+            margin: 5px 10px 5px 5px;
+        }
+
+        .submit {
+            width: 50%;
+            background-color: blue;
+            color: white;
+            padding: 8px 0px;
+            margin: 5px 10px 5px 5px;
+        }
+
+        .button {
+            width: 50%;
+            background-color: green;
+            color: white;
+            padding: 8px 0px;
+            margin: 5px 10px 5px 10px;
+        }
+
+        .register {
+            background-color: blue;
+            color: white;
+            padding: 2px 4px;
+        }
+
+        .term {
+            color: blue;
+        }
+
+        .agree {
+            width: 15%;
+            margin: 5px 20px 5px 5px;
+        }
+
+        .click {
+            width: 85%;
+            margin: 5px 0px 5px 35px;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h1>Sign Up</h1>
+        <div>
+            <form class="form" action="">
+                <div class="inner-container">
+                    <input class="inline-left" type="text" placeholder="First Name">
+                    <input class="inline-right" type="text" placeholder="Last Name">
+                </div>
+                <div class="inner-container">
+                    <input class="block" type="text" placeholder="Mobile No">
+                </div>
+                <div class="inner-container">
+                    <input class="block" type="text" placeholder="Email Address">
+                </div>
+                <div class="inner-container">
+                    <input class="inline-left" type="text" placeholder="Password">
+                    <input class="inline-right" type="text" placeholder="Confirm Password">
+                </div>
+                <div class="inner-container">
+                    <div class="agree">
+                        <input type="checkbox">
+                        <span><strong>I Agree</strong></span>
+                    </div>
+                    <div class="click">By Clicking <span class="register">Register</span> you agree to the <span class="term">Terms and Conditions</span> set <br/>out by this site, including our Cookie Use.</div>
+                </div>
+                <div class="inner-container">
+                    <input class="submit" type="submit" value="Register">
+                    <input class="button" type="button" value="Sign In">
+                </div>
+            </form>
+        </div>        
+    </section>
+</body>
+</html>
