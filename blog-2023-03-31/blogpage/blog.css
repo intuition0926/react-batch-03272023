@@ -1,5 +1,3 @@
-
-
 .page-container {
     display: flex;
     flex-direction: column;
@@ -7,11 +5,87 @@
 
 .blog-container {
     display: flex;
+}
+
+.main-blog {
+    display: flex;
     flex-direction: column;
     width: 70%;
+    margin-right: 40px;
+}
+
+.main > h2 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.main p {
+    margin-left: 20px;
+}
+
+.main .first-child {
+    margin-bottom: 30px;
+}
+
+.main .second-child {
+    margin-bottom: 15px;
+}
+
+.main .third-child {
+    margin-bottom: 15px;
+    border: 1px var(--tertiary-color) solid;
+}
+
+.main .last-child {
+    margin-bottom: 15px;
+}
+
+.date {
+    margin: 3px 0px 16px 20px;
+}
+
+.text {
+    color: var(--primary-color);
+}
+
+.side-blog {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 .mark {
     color: var(--primary-color);
+}
+
+.archives a {
+    display: block;
+    color: var(--primary-color);
+}
+
+.elsewhere a {
+    display: block;
+    color: var(--primary-color);
+}
+
+.older {
+    color: var(--primary-color);
+    background-color: white;
+    width: 200px;
+    border: 1px var(--primary-color) solid;
+    border-radius: 40%;
+    padding: 5px;
+    margin: 100px 20px 0px 20px;
+}
+
+.newer {
+    color: var(--tertiary-color);
+    background-color: white;
+    width: 200px;
+    border: 1px var(--tertiary-color) solid;
+    border-radius: 40%;
+    padding: 5px;
+    margin: 100px 10px 0px 0px;
 }
 

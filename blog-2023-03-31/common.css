@@ -1,6 +1,7 @@
 :root {
     --primary-color: blue;
     --secondary-color: green;
+    --tertiary-color: lightgray;
 }
 
 * {
