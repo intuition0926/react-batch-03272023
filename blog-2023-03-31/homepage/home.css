@@ -1,0 +1,48 @@
+.home-blog-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-blog {
+    display: flex;
+}
+
+.card {
+    width: 50%;
+    border: 4px solid lightgray;
+    box-shadow: 4px 5px 5px lightgray;
+    margin: 20px;
+}
+
+.card:hover {
+    border: 1px solid lightgray;
+    box-shadow: 1px 1px 1px lightgray;
+}
+
+.card-left {
+    margin-right: 30px;
+}
+
+.world, .design, .post, .example, .date, .alink {
+    margin-left: 10px;
+}
+
+.world, .design, .alink {
+    margin-bottom: 10px;
+}
+
+.post {
+    margin-bottom: 40px;
+}
+
+.world {
+    color: var(--primary-color);
+}
+
+.design {
+    color: var(--secondary-color);
+}
+
+.world, .design {
+    margin-top: 10px;
+}

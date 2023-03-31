@@ -1,0 +1,17 @@
+
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.mark {
+    color: var(--primary-color);
+}
+
