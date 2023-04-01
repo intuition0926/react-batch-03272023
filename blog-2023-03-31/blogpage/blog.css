@@ -15,6 +15,7 @@
 
 .author {
     color: var(--primary-color);
+    display: inline;
 }
 
 .main-post p {
