@@ -1,17 +1,12 @@
-.home-blog-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.home-blog {
-    display: flex;
+.grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .card {
-    width: 50%;
     border: 4px solid lightgray;
     box-shadow: 4px 5px 5px lightgray;
-    margin: 20px;
+    padding: 1rem 1rem 0 1rem;
 }
 
 .card:hover {
@@ -19,20 +14,18 @@
     box-shadow: 1px 1px 1px lightgray;
 }
 
-.card-left {
-    margin-right: 30px;
+.card .world, .card .design {
+    margin-bottom: 0.6rem;
 }
 
-.world, .design, .post, .example, .date, .alink {
-    margin-left: 10px;
+.card .date {
+    margin-top: 0.3rem;
+    margin-bottom: 0.6rem;
 }
 
-.world, .design, .alink {
-    margin-bottom: 10px;
-}
-
-.post {
-    margin-bottom: 40px;
+.card a {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
 }
 
 .world {
@@ -43,6 +36,6 @@
     color: var(--secondary-color);
 }
 
-.world, .design {
-    margin-top: 10px;
+.blog-template {
+    margin-bottom: 1rem;
 }

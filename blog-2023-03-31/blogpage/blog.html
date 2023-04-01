@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="blog.css">
 </head>
 <body>
-    <section class="home-container">
-        <nav class="nav-container">
+    <section class="page-container">
+        <nav class="nav">
             <h2>Blog Title</h2>
             <ul class="nav-list">
                 <li class="nav-home"><a href="../homepage/home.html">Home</a></li>
                 <li class="nav-blog"><a href="../blogpage/blog.html">Blog</a></li>
             </ul>
         </nav>
-        <div class="blog-container">
-            <div class="main-blog">
-                <div class="main">
+        <div class="grid">
+            <div class="main">
+                <div class="main-post">
                     <h2>Sample blog post</h2>
-                    <p class="date">January 1, 2014 by <a class="mark" href="">Mark</a></p>
-                    <p class="first-child">This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
-                    <p class="second-child">Cum sociis natoque penatibus et magnis <span class="text">dis parturient montes</span>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectutur purus sit amet fermentum.</p>
-                    <p class="third-child">Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p class="last-child">Etiam porta $serm maflensnand magna mollis euismod. Crass mattis consectutur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                    <p class="date">January 1, 2014 by <a class="author" href="">Mark</a></p>
+                    <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+                    <p class="fourth-child">Cum sociis natoque penatibus et magnis <span class="author">dis parturient montes</span>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectutur purus sit amet fermentum.</p>
+                    <p class="box">Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p>Etiam porta $serm maflensnand magna mollis euismod. Crass mattis consectutur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
                 </div>
                 <div class="heading">
                     <h2>Heading</h2>
@@ -33,7 +33,7 @@
                 <div class="sub-heading">
                     <h2>Sub-heading</h2>
                     <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <p>Example code block</p>
+                    <p class="box">Example code block</p>
                     <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
                 </div>
                 <div class="sub-heading">
@@ -55,9 +55,9 @@
                     <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
                 </div>  
             </div>
-            <div class="side-blog">
+            <div class="side">
                 <div class="about">
-                    <h2><i>About</i></h2>
+                    <h2 class="title"><i>About</i></h2>
                     <p>Etiam porta serm rhalesuada rhagna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
                 </div>
                 <div class="archives">
@@ -87,6 +87,9 @@
             <button class="older">Older Post</button>
             <button class="newer">Newer Post</button>
         </div>
+        <footer>
+            <p>Blog template built for <a href="">Bootstrap</a></p>
+        </footer>
     </section>
 </body>
 </html>

@@ -1,91 +1,96 @@
-.page-container {
+.grid {
+    grid-template-columns: 7fr 3fr;
+}
+
+.side, .main {
     display: flex;
     flex-direction: column;
+} 
+
+.main-post h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
 }
 
-.blog-container {
-    display: flex;
+.author {
+    color: var(--primary-color);
 }
 
-.main-blog {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    margin-right: 40px;
+.main-post p {
+    margin-bottom: 0.8rem;
 }
 
-.main > h2 {
-    font-size: 30px;
-    margin-top: 20px;
-    margin-left: 20px;
+.heading {
+    margin-bottom: 1rem;
 }
 
-.main p {
-    margin-left: 20px;
+.heading h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
 }
 
-.main .first-child {
-    margin-bottom: 30px;
+.sub-heading h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
 }
 
-.main .second-child {
-    margin-bottom: 15px;
+.sub-heading p {
+    margin-bottom: 0.8rem;
 }
 
-.main .third-child {
-    margin-bottom: 15px;
+.sub-heading .box {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sub-heading ul, .sub-heading ol {
+    margin: 0.8rem 2.0rem;
+}
+
+.box {
     border: 1px var(--tertiary-color) solid;
-}
-
-.main .last-child {
-    margin-bottom: 15px;
 }
 
 .date {
-    margin: 3px 0px 16px 20px;
+    margin-bottom: 1rem;
 }
 
-.text {
-    color: var(--primary-color);
+.fourth-child {
+    margin-top: 1.6rem;
 }
 
-.side-blog {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
+.about {
+    background-color: var(--tertiary-color);
+    margin-bottom: 4rem;
+    padding: 1rem 0.6rem 1rem 0.6rem;
 }
 
-.mark {
-    color: var(--primary-color);
+.about h2 {
+    margin-bottom: 0.4rem;
 }
 
-.archives a {
-    display: block;
-    color: var(--primary-color);
+.archives, .elsewhere {
+    margin-bottom: 3rem;
+    padding-left: 0.6rem;
 }
 
-.elsewhere a {
-    display: block;
-    color: var(--primary-color);
+.archives h2, .elsewhere h2 {
+    margin-bottom: 0.2rem;
 }
 
-.older {
-    color: var(--primary-color);
-    background-color: white;
-    width: 200px;
-    border: 1px var(--primary-color) solid;
-    border-radius: 40%;
-    padding: 5px;
-    margin: 100px 20px 0px 20px;
+a {
+    margin-bottom: 0.1rem;
 }
 
-.newer {
-    color: var(--tertiary-color);
-    background-color: white;
-    width: 200px;
-    border: 1px var(--tertiary-color) solid;
-    border-radius: 40%;
-    padding: 5px;
-    margin: 100px 10px 0px 0px;
-}
+
+
+
+
+
+
+
+
+
 
