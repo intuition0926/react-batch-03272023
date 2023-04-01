@@ -27,19 +27,27 @@ body {
 }
 
 .nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: var(--primary-color);
+    padding: 0.8rem 0;
 }
 
-.nav {
-    background-color: var(--primary-color);
-    padding: 10px 0px;
-    justify-content: center;
+.nav h2 {
+    text-align: right;
+    color: orange;
+    margin-right: 1rem;
 }
 
 .nav-list {
     display: flex;
     justify-content: right;
     list-style: none;
+    margin-right: 2rem;
+}
+
+.nav-list .nav-home {
+    margin-right: 2rem;
 }
 
 a {
