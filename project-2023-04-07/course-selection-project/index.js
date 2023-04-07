@@ -1,11 +1,9 @@
 class CourseModel {
     allCourses;
     selectedCourses;
-    storedCourses;
     constructor() {
         this.allCourses = [];
         this.selectedCourses = [];
-        this.storedCourses = [];
     }
 
     async fetchCourses() {
@@ -25,11 +23,6 @@ class CourseModel {
     async deleteCourse(id) {
         await API.deleteCourse(id);
     }
-
-    getSelectedCourse() {
-        this.selectedCourses = this.allCourses.filter(course => course.selected);
-        return this.selectedCourses;
-    }
 }
 
 class CourseView {
@@ -45,7 +38,7 @@ class CourseView {
 
     createSelectedCourse(course) {
         const courseElem = document.createElement("li");
-        courseElem.setAttribute("selected", false);
+        courseElem.style.backgroundColor = "white";
         courseElem.id = course.courseId;
         const courseName = document.createElement("div");
         courseName.innerText = course.courseName;
@@ -79,6 +72,7 @@ class CourseView {
 
     displaySelectedCourses(courses) {
         courses.forEach(course => {
+            console.log(JSON.stringify(course));
             this.createSelectedCourse(course);
         })
     }
@@ -94,9 +88,7 @@ class CourseController {
     init() {
         this.model.fetchCourses().then(() => {
             const courses = this.model.allCourses;
-            const selectedCourses = this.model.selectedCourses;
             this.view.displayAllCourses(courses);
-            this.view.displaySelectedCourses(selectedCourses);
             this.handleSelection();
             this.handleSelectButton();
         })
@@ -158,6 +150,7 @@ class CourseController {
                     }
                 })
                 this.model.selectedCourses = courses;
+                this.view.displaySelectedCourses(this.model.selectedCourses);
             }
         })
     }
