@@ -1,4 +1,5 @@
 const API = (() => {
+
     const API_URL = "http://localhost:3000/courseList";
 
     const getCourseList = async () => {
@@ -11,8 +12,8 @@ const API = (() => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-            }
-            body: JSON.stringify(newCourse);
+            },
+            body: JSON.stringify(newCourse),
         })
         return await res.json();
     }
