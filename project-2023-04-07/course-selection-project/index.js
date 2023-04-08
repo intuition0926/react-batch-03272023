@@ -1,11 +1,11 @@
 class CourseModel {
     allCourses;
     selectedCourses;
-    selectedCourseIds;
+    selectedFromCourses;
     constructor() {
         this.allCourses = [];
         this.selectedCourses = [];
-        this.selectedCourseIds = [];
+        this.selectedFromCourses = [];
     }
 
     async fetchCourses() {
@@ -17,13 +17,24 @@ class CourseModel {
         return courses;
     }
 
-    async addCourse(course) {
-        this.selectedCourses.push(course);
-        return course;
+    getTotalCredit() {
+        var credit = 0;
+        this.allCourses.forEach(course => {
+            if (this.selectedFromCourses.includes(course.courseId)) {
+                credit += course.credit;
+            }
+        })
+        return credit;
     }
 
-    async deleteCourse(id) {
-        await API.deleteCourse(id);
+    getSelectedCourses() {
+        const courses = this.selectedCourses;
+        this.allCourses.forEach(course => {
+            if (this.selectedFromCourses.includes(course.courseId) && !courses.includes(course)) {
+                courses.push(course); 
+            }
+        })
+        this.selectedCourses = courses;
     }
 }
 
@@ -38,26 +49,11 @@ class CourseView {
         this.selectedFromCourses = [];
     }
 
-    createSelectedCourse(course) {
-        const courseElem = document.createElement("li");
-        courseElem.style.backgroundColor = "white";
-        courseElem.id = course.courseId;
-        const courseName = document.createElement("div");
-        courseName.innerText = course.courseName;
-        const courseType = document.createElement("div");
-        courseType.innerText = "Course Type : " + (course.required ? "Compulsory" : "Elective");
-        const courseCredit = document.createElement("div");
-        courseCredit.innerText = "Course Credit : " + course.credit;
-        courseElem.appendChild(courseName);
-        courseElem.appendChild(courseType);
-        courseElem.appendChild(courseCredit);
-        this.selectedCourses.appendChild(courseElem);
-    }
-
     displayAllCourses(courses) {
-        courses.forEach(course => {
+        courses.forEach((course, index) => {
             const courseElem = document.createElement("li");
-            courseElem.style.backgroundColor = "white";
+            courseElem.classList.add(index);
+            courseElem.classList.add(index % 2 == 1 ? "odd" : "even");
             courseElem.id = course.courseId;
             const courseName = document.createElement("div");
             courseName.innerText = course.courseName;
@@ -78,8 +74,21 @@ class CourseView {
             this.selectedCourses.removeChild(child);
             child = this.selectedCourses.lastElementChild;
         }
-        courses.forEach(course => {
-            this.createSelectedCourse(course);
+        courses.forEach((course, index) => {
+            const courseElem = document.createElement("li");
+            courseElem.classList.add(index);
+            courseElem.classList.add(index % 2 == 1 ? "odd" : "even");
+            courseElem.id = course.courseId;
+            const courseName = document.createElement("div");
+            courseName.innerText = course.courseName;
+            const courseType = document.createElement("div");
+            courseType.innerText = "Course Type : " + (course.required ? "Compulsory" : "Elective");
+            const courseCredit = document.createElement("div");
+            courseCredit.innerText = "Course Credit : " + course.credit;
+            courseElem.appendChild(courseName);
+            courseElem.appendChild(courseType);
+            courseElem.appendChild(courseCredit);
+            this.selectedCourses.appendChild(courseElem);
         })
     }
 }
@@ -105,13 +114,15 @@ class CourseController {
             e.stopPropagation();
             const elem = e.target.parentElement;
             if (elem.tagName === "LI") {
-                if (elem.style.backgroundColor === "white") {
-                    elem.style.backgroundColor = "blue";
+                if (!elem.classList.contains("selected")) {
+                    elem.classList.add("selected");
                     this.view.selectedFromCourses.push(parseInt(elem.id));
+                    this.model.selectedFromCourses.push(parseInt(elem.id));
                     this.handleTotalCredit();
                 } else {
-                    elem.style.backgroundColor = "white";
+                    elem.classList.remove("selected");
                     this.view.selectedFromCourses.pop(parseInt(elem.id));
+                    this.model.selectedFromCourses.pop(parseInt(elem.id));
                     this.handleTotalCredit();
                 }
             }
@@ -121,13 +132,15 @@ class CourseController {
             const elem = e.target.parentElement;
             console.log(elem.tagName);
             if (elem.tagName === "LI") {
-                if (elem.style.backgroundColor === "white") {
-                    elem.style.backgroundColor = "blue";
-                    this.view.selectedFromCourses.pop(parseInt(elem.id));
+                if (!elem.classList.contains("selected")) {
+                    elem.classList.add("selected");
+                    this.view.selectedFromCourses.push(parseInt(elem.id));
+                    this.model.selectedFromCourses.push(parseInt(elem.id));
                     this.handleTotalCredit();
                 } else {
-                    elem.style.backgroundColor = "white";
-                    this.view.selectedFromCourses.push(parseInt(elem.id));
+                    elem.classList.remove("selected");
+                    this.view.selectedFromCourses.pop(parseInt(elem.id));
+                    this.model.selectedFromCourses.pop(parseInt(elem.id));
                     this.handleTotalCredit();
                 }
             }
@@ -135,33 +148,21 @@ class CourseController {
     }
 
     handleTotalCredit() {
-        var credit = 0;
-        this.model.allCourses.forEach(course => {
-            if (this.view.selectedFromCourses.includes(course.courseId)) {
-                credit += course.credit;
-            }
-        })
-        this.view.totalCredit.innerText = credit;
+        this.view.totalCredit.innerText = this.model.getTotalCredit();
     }
 
     handleSelectButton() {
         this.view.selectButton.addEventListener("click", (e) => {
             e.preventDefault();
-            var txt = "You have chosen " + this.view.totalCredit.innerText + " credits for this semester. You cannot change once you submit. Do you want to confirm?";
-            if (confirm(txt)) {
-                const courses = this.model.selectedCourses;
-                const courseIds = this.model.selectedCourseIds;
-                this.model.allCourses.forEach(course => {
-                    if (this.view.selectedFromCourses.includes(course.courseId)) {
-                        if (!courseIds.includes(course.courseId)) {
-                            courseIds.push(course.courseId);
-                            courses.push(course);
-                        } 
-                    }
-                })
-                this.model.selectedCourses = [...courses];
-                this.model.selectedCourseIds = [...courseIds];
-                this.view.displaySelectedCourses(this.model.selectedCourses);
+            if (parseInt(this.view.totalCredit.innerText) > 18) {
+                alert("You can only choose up to 18 credits in one semester");
+            } else {
+                var txt = "You have chosen " + this.view.totalCredit.innerText + " credits for this semester. You cannot change once you submit. Do you want to confirm?";
+                if (confirm(txt)) {
+                    this.model.getSelectedCourses();
+                    this.view.displaySelectedCourses(this.model.selectedCourses);
+                    this.view.selectButton.setAttribute("disabled", true);
+                }
             }
         })
     }

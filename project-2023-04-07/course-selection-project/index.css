@@ -1,3 +1,9 @@
+:root {
+    --odd-color: white;
+    --even-color: rgb(221,239,221);
+    --selected-color: deepskyblue;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -21,4 +27,16 @@ ul {
 li {
     border: 1px black solid;
     background-color: white;
+}
+
+.odd {
+    background-color: var(--odd-color);
+}
+
+.even {
+    background-color: var(--even-color);
+}
+
+.selected {
+    background-color: var(--selected-color);
 }
