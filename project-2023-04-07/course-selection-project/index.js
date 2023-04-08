@@ -1,9 +1,11 @@
 class CourseModel {
     allCourses;
     selectedCourses;
+    selectedCourseIds;
     constructor() {
         this.allCourses = [];
         this.selectedCourses = [];
+        this.selectedCourseIds = [];
     }
 
     async fetchCourses() {
@@ -71,8 +73,12 @@ class CourseView {
     }
 
     displaySelectedCourses(courses) {
+        var child = this.selectedCourses.lastElementChild; 
+        while (child) {
+            this.selectedCourses.removeChild(child);
+            child = this.selectedCourses.lastElementChild;
+        }
         courses.forEach(course => {
-            console.log(JSON.stringify(course));
             this.createSelectedCourse(course);
         })
     }
@@ -143,13 +149,18 @@ class CourseController {
             e.preventDefault();
             var txt = "You have chosen " + this.view.totalCredit.innerText + " credits for this semester. You cannot change once you submit. Do you want to confirm?";
             if (confirm(txt)) {
-                const courses = [];
+                const courses = this.model.selectedCourses;
+                const courseIds = this.model.selectedCourseIds;
                 this.model.allCourses.forEach(course => {
                     if (this.view.selectedFromCourses.includes(course.courseId)) {
-                        courses.push(course);
+                        if (!courseIds.includes(course.courseId)) {
+                            courseIds.push(course.courseId);
+                            courses.push(course);
+                        } 
                     }
                 })
-                this.model.selectedCourses = courses;
+                this.model.selectedCourses = [...courses];
+                this.model.selectedCourseIds = [...courseIds];
                 this.view.displaySelectedCourses(this.model.selectedCourses);
             }
         })
