@@ -53,16 +53,13 @@ ul {
     font-size: 1.0rem;
 }
 
-li {
-    border: 1px black solid;
-    background-color: white;
-}
-
 .odd {
+    border: 1px black solid;
     background-color: var(--odd-color);
 }
 
 .even {
+    border: 1px black solid;
     background-color: var(--even-color);
 }
 

@@ -52,8 +52,7 @@ class CourseView {
     displayAllCourses(courses) {
         courses.forEach((course, index) => {
             const courseElem = document.createElement("li");
-            courseElem.classList.add(index);
-            courseElem.classList.add(index % 2 == 1 ? "odd" : "even");
+            courseElem.classList.add(index % 2 == 0 ? "odd" : "even");
             courseElem.id = course.courseId;
             const courseName = document.createElement("div");
             courseName.innerText = course.courseName;
@@ -69,15 +68,14 @@ class CourseView {
     }
 
     displaySelectedCourses(courses) {
-        var child = this.selectedCourses.lastElementChild; 
-        while (child) {
+        var child = this.selectedCourses.lastElementChild;
+        while (child && child.tagName === "LI") {
             this.selectedCourses.removeChild(child);
             child = this.selectedCourses.lastElementChild;
         }
         courses.forEach((course, index) => {
             const courseElem = document.createElement("li");
-            courseElem.classList.add(index);
-            courseElem.classList.add(index % 2 == 1 ? "odd" : "even");
+            courseElem.classList.add(index % 2 === 0 ? "odd" : "even");
             courseElem.id = course.courseId;
             const courseName = document.createElement("div");
             courseName.innerText = course.courseName;
