@@ -89,6 +89,12 @@ class CourseView {
             this.selectedCourses.appendChild(courseElem);
         })
     }
+
+    resetColor() {
+        this.selectedFromCourses.forEach(id => {
+            document.getElementById(id).classList.remove("selected");
+        })
+    }
 }
 
 class CourseController {
@@ -160,6 +166,7 @@ class CourseController {
                     this.model.getSelectedCourses();
                     this.view.displaySelectedCourses(this.model.selectedCourses);
                     this.view.selectButton.setAttribute("disabled", true);
+                    this.view.resetColor();
                 }
             }
         })
